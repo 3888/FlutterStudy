@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class MiCard extends StatelessWidget {
-  MiCard({Key? key}) : super(key: key);
+class miCard extends StatelessWidget {
+  miCard({Key? key}) : super(key: key);
 
   final avatarIcon = const CircleAvatar(
     radius: 50.0,

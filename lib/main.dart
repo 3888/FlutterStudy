@@ -12,7 +12,7 @@ void main() {
       // const ContainerExample()
       // const ColumnExample()
       //   const RowExample()
-      //   MiCard()
+      //   miCard()
       // diceApp()
     // const MagicBallApp()
     xylophoneApp()

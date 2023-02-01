@@ -11,8 +11,7 @@ Future<void> playSoundByNumber(int soundNumber) async {
 ButtonStyle raisedButtonStyle(Color background) => ElevatedButton.styleFrom(
       foregroundColor: Colors.grey[300],
       backgroundColor: background,
-      minimumSize: const Size(88, 36),
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      minimumSize: Size.fromHeight(50),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(2)),
       ),
@@ -26,53 +25,65 @@ xylophoneApp() => MaterialApp(
           backgroundColor: Colors.red[100],
         ),
         body: SafeArea(
-          child: Center(
-            child: Column(
-              children: [
-                ElevatedButton(
+          child: Column(
+            children: [
+              Expanded(
+                child: ElevatedButton(
                     onPressed: () {
                       playSoundByNumber(1);
                     },
                     child: null,
                     style: raisedButtonStyle(Colors.red)),
-                ElevatedButton(
+              ),
+              Expanded(
+                child: ElevatedButton(
                     onPressed: () {
                       playSoundByNumber(2);
                     },
                     child: null,
                     style: raisedButtonStyle(Colors.orange)),
-                ElevatedButton(
+              ),
+              Expanded(
+                child: ElevatedButton(
                     onPressed: () {
                       playSoundByNumber(3);
                     },
                     child: null,
                     style: raisedButtonStyle(Colors.yellow)),
-                ElevatedButton(
+              ),
+              Expanded(
+                child: ElevatedButton(
                     onPressed: () {
                       playSoundByNumber(4);
                     },
                     child: null,
                     style: raisedButtonStyle(Colors.green)),
-                ElevatedButton(
+              ),
+              Expanded(
+                child: ElevatedButton(
                     onPressed: () {
                       playSoundByNumber(5);
                     },
                     child: null,
                     style: raisedButtonStyle(Colors.blue)),
-                ElevatedButton(
+              ),
+              Expanded(
+                child: ElevatedButton(
                     onPressed: () {
                       playSoundByNumber(6);
                     },
                     child: null,
                     style: raisedButtonStyle(Colors.indigo)),
-                ElevatedButton(
+              ),
+              Expanded(
+                child: ElevatedButton(
                     onPressed: () {
                       playSoundByNumber(7);
                     },
                     child: null,
                     style: raisedButtonStyle(Colors.purple)),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

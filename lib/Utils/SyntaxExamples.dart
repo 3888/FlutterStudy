@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  fatArrow();
-
   curlyBracketsFunction;
   curlyBracketsFunction();
 
@@ -12,7 +10,7 @@ void main() {
   variable;
 }
 
-fatArrow() => runApp(const MaterialApp(home: Text("Some text")));
+fatArrowFunction() => runApp(const MaterialApp(home: Text("Some text")));
 
 curlyBracketsFunction() {
   var data = 'Hello World';
@@ -24,12 +22,12 @@ curlyBracketsFunction() {
 }
 
 hardcodedFunction() => runApp(
-  const MaterialApp(
-    home: Center(
-      child: Text("Test"),
-    ),
-  ),
-);
+      const MaterialApp(
+        home: Center(
+          child: Text("Test"),
+        ),
+      ),
+    );
 
 var variable = runApp(
   const MaterialApp(
