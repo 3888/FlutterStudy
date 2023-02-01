@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learn_flutter/Playground/DevBootcamp2020/MagicBall/MagicBallApp.dart';
+import 'package:learn_flutter/Playground/DevBootcamp2020/Quizler/Quizzler.dart';
 import 'package:learn_flutter/Playground/DevBootcamp2020/Xylophone/XylophoneApp.dart';
 
 import 'Playground/DevBootcamp2020/DiceApp/DiceApp.dart';
@@ -15,6 +16,7 @@ void main() {
       //   miCard()
       // diceApp()
     // const MagicBallApp()
-    xylophoneApp()
+    // xylophoneApp()
+    Quizzler()
       );
 }
