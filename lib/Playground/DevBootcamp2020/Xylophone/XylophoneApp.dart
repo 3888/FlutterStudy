@@ -17,6 +17,15 @@ ButtonStyle raisedButtonStyle(Color background) => ElevatedButton.styleFrom(
       ),
     );
 
+Expanded fullScreenButton(Color background, int soundNumber) => Expanded(
+  child: ElevatedButton(
+      onPressed: () {
+        playSoundByNumber(soundNumber);
+      },
+      child: null,
+      style: raisedButtonStyle(background)),
+);
+
 xylophoneApp() => MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.grey[100],
@@ -27,62 +36,13 @@ xylophoneApp() => MaterialApp(
         body: SafeArea(
           child: Column(
             children: [
-              Expanded(
-                child: ElevatedButton(
-                    onPressed: () {
-                      playSoundByNumber(1);
-                    },
-                    child: null,
-                    style: raisedButtonStyle(Colors.red)),
-              ),
-              Expanded(
-                child: ElevatedButton(
-                    onPressed: () {
-                      playSoundByNumber(2);
-                    },
-                    child: null,
-                    style: raisedButtonStyle(Colors.orange)),
-              ),
-              Expanded(
-                child: ElevatedButton(
-                    onPressed: () {
-                      playSoundByNumber(3);
-                    },
-                    child: null,
-                    style: raisedButtonStyle(Colors.yellow)),
-              ),
-              Expanded(
-                child: ElevatedButton(
-                    onPressed: () {
-                      playSoundByNumber(4);
-                    },
-                    child: null,
-                    style: raisedButtonStyle(Colors.green)),
-              ),
-              Expanded(
-                child: ElevatedButton(
-                    onPressed: () {
-                      playSoundByNumber(5);
-                    },
-                    child: null,
-                    style: raisedButtonStyle(Colors.blue)),
-              ),
-              Expanded(
-                child: ElevatedButton(
-                    onPressed: () {
-                      playSoundByNumber(6);
-                    },
-                    child: null,
-                    style: raisedButtonStyle(Colors.indigo)),
-              ),
-              Expanded(
-                child: ElevatedButton(
-                    onPressed: () {
-                      playSoundByNumber(7);
-                    },
-                    child: null,
-                    style: raisedButtonStyle(Colors.purple)),
-              ),
+              fullScreenButton(Colors.red, 1),
+              fullScreenButton(Colors.orange, 2),
+              fullScreenButton(Colors.yellow, 3),
+              fullScreenButton(Colors.green, 4),
+              fullScreenButton(Colors.blue, 5),
+              fullScreenButton(Colors.indigo, 6),
+              fullScreenButton(Colors.purple, 7),
             ],
           ),
         ),
