@@ -10,8 +10,7 @@ ButtonStyle textButtonStyle(Color background) => ButtonStyle(
       foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
     );
 
-TextButton textButton(
-        BuildContext context, String text, Color background, bool result) =>
+TextButton textButton(String text, Color background, Function(bool) f) =>
     TextButton(
       style: textButtonStyle(background),
       child: Text(
@@ -21,19 +20,17 @@ TextButton textButton(
           fontSize: 20.0,
         ),
       ),
-      onPressed: () {
-        clickAction(context, result);
-      },
+      onPressed: () {},
     );
 
-void clickAction(BuildContext context, bool result) {
-  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-    duration: Duration(milliseconds: 300),
-    content: Text("Result $result"),
-  ));
-}
-
 class _QuizPageState extends State<QuizPage> {
+  clickAction(bool result) {
+    scoreKeeper.add(
+        Icon(Icons.check, color: result == true ? Colors.red : Colors.green));
+  }
+
+  List<Icon> scoreKeeper = [];
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -59,13 +56,13 @@ class _QuizPageState extends State<QuizPage> {
         Expanded(
           child: Padding(
             padding: EdgeInsets.all(15.0),
-            child: textButton(context, 'True', Colors.green, true),
+            child: textButton('True', Colors.green, clickAction(true)),
           ),
         ),
         Expanded(
           child: Padding(
             padding: EdgeInsets.all(15.0),
-            child: textButton(context, 'False', Colors.red, false),
+            child: textButton('False', Colors.red, clickAction(false)),
           ),
         ),
         //TODO: Add a Row here as your score keeper
