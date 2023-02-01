@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  curlyBracketsFunction;
-  curlyBracketsFunction();
+  // curlyBracketsFunction;
+  // curlyBracketsFunction();
 
-  hardcodedFunction;
-  hardcodedFunction();
+  // hardcodedFunction;
+  // hardcodedFunction();
 
-  variable;
+  print(funWithArguments(36, 'Tony'));
+  print(variableWithArgs(36, 'Tony'));
+
+  // variable;
 }
 
-fatArrowFunction() => runApp(const MaterialApp(home: Text("Some text")));
+fatArrowFunSingleLineSyntax() => runApp(const MaterialApp(home: Text("Some text")));
+
+funWithArguments(int age, String name) {
+  return 'Age is $age name $name';
+}
 
 curlyBracketsFunction() {
   var data = 'Hello World';
@@ -36,3 +43,7 @@ var variable = runApp(
     ),
   ),
 );
+
+String variableWithArgs(int age, String name) {
+  return 'Age is $age name $name';
+}
