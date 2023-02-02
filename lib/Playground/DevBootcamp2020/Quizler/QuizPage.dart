@@ -5,6 +5,16 @@ class QuizPage extends StatefulWidget {
   _QuizPageState createState() => _QuizPageState();
 }
 
+class QuizItem {
+  final String question;
+  final bool answer;
+
+  QuizItem(
+    this.question,
+    this.answer,
+  );
+}
+
 class _QuizPageState extends State<QuizPage> {
   ButtonStyle textButtonStyle(Color background) => ButtonStyle(
         backgroundColor: MaterialStateProperty.all<Color>(background),
@@ -22,7 +32,6 @@ class _QuizPageState extends State<QuizPage> {
           ),
         ),
         onPressed: () {
-          print("Button click");
           setState(() {
             clickAction(result);
           });
@@ -30,18 +39,36 @@ class _QuizPageState extends State<QuizPage> {
       );
 
   List<Icon> scoreKeeper = [];
+  int currentIndex = 0;
 
   clickAction(bool result) {
     Icon icon;
-    if (result) {
+    if (result == questions[currentIndex].answer) {
       icon = Icon(Icons.check, color: Colors.green);
     } else {
       icon = Icon(Icons.close, color: Colors.red);
     }
+
     setState(() {
-      scoreKeeper.add(icon);
+      if (scoreKeeper.length == questions.length) {
+        return;
+      } else {
+        scoreKeeper.add(icon);
+      }
+      ;
+
+      if (currentIndex < questions.length - 1) {
+        currentIndex++;
+      }
     });
   }
+
+  List<QuizItem> questions = [
+    QuizItem("question1", true),
+    QuizItem("question2", false),
+    QuizItem("question3", false),
+    QuizItem("question4", true)
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +82,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                'This is where the question text will go.',
+                questions[currentIndex].question,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
