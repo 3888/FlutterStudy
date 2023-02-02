@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learn_flutter/Playground/DevBootcamp2020/Quizler/QuizBank.dart';
 
 class QuizPage extends StatefulWidget {
   @override
@@ -16,6 +17,8 @@ class QuizItem {
 }
 
 class _QuizPageState extends State<QuizPage> {
+  QuizBrain quizBrain = QuizBrain();
+
   ButtonStyle textButtonStyle(Color background) => ButtonStyle(
         backgroundColor: MaterialStateProperty.all<Color>(background),
         foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
@@ -43,32 +46,22 @@ class _QuizPageState extends State<QuizPage> {
 
   clickAction(bool result) {
     Icon icon;
-    if (result == questions[currentIndex].answer) {
+    if (result == quizBrain.getQuizAnswer()) {
       icon = Icon(Icons.check, color: Colors.green);
     } else {
       icon = Icon(Icons.close, color: Colors.red);
     }
 
     setState(() {
-      if (scoreKeeper.length == questions.length) {
+      if (scoreKeeper.length == quizBrain.length()) {
         return;
       } else {
         scoreKeeper.add(icon);
       }
-      ;
 
-      if (currentIndex < questions.length - 1) {
-        currentIndex++;
-      }
+      quizBrain.nextQuestion();
     });
   }
-
-  List<QuizItem> questions = [
-    QuizItem("question1", true),
-    QuizItem("question2", false),
-    QuizItem("question3", false),
-    QuizItem("question4", true)
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +75,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                questions[currentIndex].question,
+                quizBrain.getQuizQuestion(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
