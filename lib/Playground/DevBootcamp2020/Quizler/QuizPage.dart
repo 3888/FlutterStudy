@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:learn_flutter/Playground/DevBootcamp2020/Quizler/QuizBrian.dart';
 
 class QuizPage extends StatefulWidget {
@@ -54,7 +55,18 @@ class _QuizPageState extends State<QuizPage> {
 
     setState(() {
       if (scoreKeeper.length == quizBrain.length()) {
-        //TODO add Alert & quiz reset
+        Fluttertoast.showToast(
+            msg: "Quiz restarted!",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.lightBlueAccent,
+            textColor: Colors.white,
+            fontSize: 16.0);
+
+        quizBrain.finishQuiz();
+        scoreKeeper.clear();
+
         return;
       } else {
         scoreKeeper.add(icon);

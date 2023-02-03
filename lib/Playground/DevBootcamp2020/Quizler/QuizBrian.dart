@@ -16,7 +16,12 @@ class QuizBrain {
     }
   }
 
-  getQuizQuestion() => _questions[_position].question;
+  finishQuiz() => _position = 0;
+
+  getQuizQuestion() {
+    print ("_position $_position");
+    return _questions[_position].question;
+  }
 
   getQuizAnswer() => _questions[_position].answer;
 
