@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'DicePage.dart';
 
-diceApp() =>
+DiceApp() =>
     MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.red,

@@ -26,7 +26,7 @@ Expanded fullScreenButton(Color background, int soundNumber) => Expanded(
       style: raisedButtonStyle(background)),
 );
 
-xylophoneApp() => MaterialApp(
+XylophoneApp() => MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.grey[100],
         appBar: AppBar(
