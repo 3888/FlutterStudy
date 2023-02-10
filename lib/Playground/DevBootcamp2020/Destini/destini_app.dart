@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'StoryPage.dart';
+import 'story_page.dart';
 
 class DestiniApp extends StatelessWidget {
   const DestiniApp({Key? key}) : super(key: key);

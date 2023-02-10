@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'QuizPage.dart';
+import 'quiz_page.dart';
 
 class Quizzler extends StatelessWidget {
   const Quizzler({Key? key}) : super(key: key);

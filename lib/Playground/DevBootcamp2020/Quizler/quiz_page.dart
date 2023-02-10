@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:learn_flutter/Playground/DevBootcamp2020/Quizler/QuizBrian.dart';
+import 'package:learn_flutter/Playground/DevBootcamp2020/Quizler/quiz_brian.dart';
 
 class QuizPage extends StatefulWidget {
   const QuizPage({Key? key}) : super(key: key);

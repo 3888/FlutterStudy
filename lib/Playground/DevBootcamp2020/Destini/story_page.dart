@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'StoryBrain.dart';
+import 'story_brain.dart';
 
 class StoryPage extends StatefulWidget {
   const StoryPage({Key? key}) : super(key: key);

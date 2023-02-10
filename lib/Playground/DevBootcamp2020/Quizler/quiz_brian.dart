@@ -1,4 +1,4 @@
-import 'QuizPage.dart';
+import 'quiz_page.dart';
 
 class QuizBrain {
   final List<QuizItem> _questions = [

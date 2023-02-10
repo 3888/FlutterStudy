@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learn_flutter/Playground/DevBootcamp2020/MagicBall/BallPage.dart';
+import 'package:learn_flutter/Playground/DevBootcamp2020/MagicBall/ball_page.dart';
 
 class MagicBallApp extends StatelessWidget {
   const MagicBallApp({Key? key}) : super(key: key);

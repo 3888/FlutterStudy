@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:learn_flutter/Playground/DevBootcamp2020/BmiCalc/BmiCalcApp.dart';
+
+import 'Playground/DevBootcamp2020/BmiCalc/bmi_calc_app.dart';
+
 
 void main() {
   runApp(

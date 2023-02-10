@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'Ball.dart';
+import 'ball.dart';
 
 class BallPage extends StatelessWidget {
   const BallPage({Key? key}) : super(key: key);

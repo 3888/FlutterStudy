@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'DicePage.dart';
+import 'dice_page.dart';
 
 diceApp() =>
     MaterialApp(
