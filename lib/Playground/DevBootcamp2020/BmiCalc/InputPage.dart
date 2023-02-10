@@ -8,7 +8,7 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   gender() => Expanded(
         child: Container(
-          margin: EdgeInsets.all(15.0),
+          margin: const EdgeInsets.all(15.0),
           decoration: BoxDecoration(
               color: Colors.orangeAccent,
               borderRadius: BorderRadius.circular(10.0)),
@@ -19,24 +19,24 @@ class _InputPageState extends State<InputPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('BMI CALCULATOR'),
+          title: const Text('BMI CALCULATOR'),
         ),
         body: Column(
           children: [
             Expanded(
                 child: Row(
-              children: [Card(), Card()],
+              children: const [Card(), Card()],
             )),
-            Expanded(child: Card()),
+            const Expanded(child: Card()),
             Expanded(
                 child: Row(
-              children: [Card(), Card()],
+              children: const [Card(), Card()],
             )),
             Container(
               color: Colors.red,
               width: double.infinity,
               height: 80.0,
-              margin: EdgeInsets.only(top: 10.0),
+              margin: const EdgeInsets.only(top: 10.0),
             )
           ],
         ));
@@ -44,15 +44,17 @@ class _InputPageState extends State<InputPage> {
 }
 
 class Card extends StatelessWidget {
-  Card({this.color = Colors.black45});
+  const Card({this.color = Colors.black45, this.cardChild});
 
   final Color color;
+  final Widget? cardChild;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        margin: EdgeInsets.all(15.0),
+        child: cardChild,
+        margin: const EdgeInsets.all(15.0),
         decoration: BoxDecoration(
             color: color, borderRadius: BorderRadius.circular(10.0)),
       ),
