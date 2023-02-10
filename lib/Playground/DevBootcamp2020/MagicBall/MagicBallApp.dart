@@ -11,7 +11,7 @@ class MagicBallApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: BallPage()
+        home: const BallPage()
     );
   }
 }

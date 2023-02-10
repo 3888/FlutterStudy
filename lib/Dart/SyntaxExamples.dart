@@ -7,8 +7,8 @@ void main() {
   // hardcodedFunction;
   // hardcodedFunction();
 
-  print(funWithArguments(36, 'Tony'));
-  print(variableWithArgs(36, 'Tony'));
+  // print(funWithArguments(36, 'Tony'));
+  // print(variableWithArgs(36, 'Tony'));
 
   // variable;
 }

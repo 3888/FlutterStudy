@@ -32,7 +32,9 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
+  font_awesome_flutter: ^10.3.0
   fluttertoast: ^8.1.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -3,6 +3,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:learn_flutter/Playground/DevBootcamp2020/Quizler/QuizBrian.dart';
 
 class QuizPage extends StatefulWidget {
+  const QuizPage({Key? key}) : super(key: key);
+
   @override
   _QuizPageState createState() => _QuizPageState();
 }
@@ -30,7 +32,7 @@ class _QuizPageState extends State<QuizPage> {
         style: textButtonStyle(background),
         child: Text(
           text,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 20.0,
           ),
@@ -48,9 +50,9 @@ class _QuizPageState extends State<QuizPage> {
   clickAction(bool result) {
     Icon icon;
     if (result == quizBrain.getQuizAnswer()) {
-      icon = Icon(Icons.check, color: Colors.green);
+      icon = const Icon(Icons.check, color: Colors.green);
     } else {
-      icon = Icon(Icons.close, color: Colors.red);
+      icon = const Icon(Icons.close, color: Colors.red);
     }
 
     setState(() {
@@ -85,12 +87,12 @@ class _QuizPageState extends State<QuizPage> {
         Expanded(
           flex: 5,
           child: Padding(
-            padding: EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(10.0),
             child: Center(
               child: Text(
                 quizBrain.getQuizQuestion(),
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 25.0,
                   color: Colors.white,
                 ),
@@ -100,13 +102,13 @@ class _QuizPageState extends State<QuizPage> {
         ),
         Expanded(
           child: Padding(
-            padding: EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(15.0),
             child: textButton('True', Colors.green, true),
           ),
         ),
         Expanded(
           child: Padding(
-            padding: EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(15.0),
             child: textButton('False', Colors.red, false),
           ),
         ),

@@ -1,9 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'StoryBrain.dart';
 
 class StoryPage extends StatefulWidget {
+  const StoryPage({Key? key}) : super(key: key);
+
+  @override
   _StoryPageState createState() => _StoryPageState();
 }
 
@@ -23,8 +25,8 @@ class _StoryPageState extends State<StoryPage> {
           image: DecorationImage(
               image: AssetImage("images/background.png"), fit: BoxFit.cover),
         ),
-        padding: EdgeInsets.symmetric(vertical: 50.0, horizontal: 15.0),
-        constraints: BoxConstraints.expand(),
+        padding: const EdgeInsets.symmetric(vertical: 50.0, horizontal: 15.0),
+        constraints: const BoxConstraints.expand(),
         child: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -34,7 +36,7 @@ class _StoryPageState extends State<StoryPage> {
                 child: Center(
                   child: Text(
                     storyBrain.getStory(),
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 25.0,
                     ),
                   ),
@@ -51,13 +53,13 @@ class _StoryPageState extends State<StoryPage> {
                   style: textButtonStyle(Colors.red),
                   child: Text(
                     storyBrain.getChoice1(),
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 20.0,
                     ),
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20.0,
               ),
               Expanded(
@@ -73,7 +75,7 @@ class _StoryPageState extends State<StoryPage> {
                     style: textButtonStyle(Colors.blue),
                     child: Text(
                       storyBrain.getChoice2(),
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 20.0,
                       ),
                     ),

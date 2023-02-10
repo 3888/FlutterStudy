@@ -19,7 +19,6 @@ class QuizBrain {
   finishQuiz() => _position = 0;
 
   getQuizQuestion() {
-    print ("_position $_position");
     return _questions[_position].question;
   }
 

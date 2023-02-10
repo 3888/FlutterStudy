@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class InputPage extends StatefulWidget {
+  const InputPage({Key? key}) : super(key: key);
+
   @override
   _InputPageState createState() => _InputPageState();
 }
@@ -19,6 +21,7 @@ class _InputPageState extends State<InputPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          centerTitle: true,
           title: const Text('BMI CALCULATOR'),
         ),
         body: Column(
@@ -44,7 +47,7 @@ class _InputPageState extends State<InputPage> {
 }
 
 class Card extends StatelessWidget {
-  const Card({this.color = Colors.black45, this.cardChild});
+  const Card({Key? key, this.color = Colors.black45, this.cardChild}) : super(key: key);
 
   final Color color;
   final Widget? cardChild;

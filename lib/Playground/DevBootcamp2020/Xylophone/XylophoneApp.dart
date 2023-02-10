@@ -11,7 +11,7 @@ Future<void> playSoundByNumber(int soundNumber) async {
 ButtonStyle raisedButtonStyle(Color background) => ElevatedButton.styleFrom(
       foregroundColor: Colors.grey[300],
       backgroundColor: background,
-      minimumSize: Size.fromHeight(50),
+      minimumSize: const Size.fromHeight(50),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(2)),
       ),
@@ -26,7 +26,7 @@ Expanded fullScreenButton(Color background, int soundNumber) => Expanded(
       style: raisedButtonStyle(background)),
 );
 
-XylophoneApp() => MaterialApp(
+xylophoneApp() => MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.grey[100],
         appBar: AppBar(

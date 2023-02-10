@@ -12,7 +12,7 @@ class ImageFromWebOrAssets extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Colors.amberAccent,
         appBar: AppBar(
-            title: Text('AppBar Title Text'),
+            title: const Text('AppBar Title Text'),
             backgroundColor: Colors.blueGrey[900]),
         body: const Center(
           child: Image(
