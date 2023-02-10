@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class InputPage extends StatefulWidget {
   const InputPage({Key? key}) : super(key: key);
@@ -8,14 +9,8 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  gender() => Expanded(
-        child: Container(
-          margin: const EdgeInsets.all(15.0),
-          decoration: BoxDecoration(
-              color: Colors.orangeAccent,
-              borderRadius: BorderRadius.circular(10.0)),
-        ),
-      );
+  buildGender(List<Widget> widgetList) =>
+      Column(mainAxisAlignment: MainAxisAlignment.center, children: widgetList);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +23,28 @@ class _InputPageState extends State<InputPage> {
           children: [
             Expanded(
                 child: Row(
-              children: const [Card(), Card()],
+              children: [
+                Card(
+                  cardChild: buildGender([
+                    Icon(FontAwesomeIcons.mars, size: 80.0),
+                    SizedBox(height: 15.0),
+                    Text(
+                      'MALE',
+                      style:
+                          TextStyle(fontSize: 18.0, color: Color(0xFF8D8E98)),
+                    )
+                  ]),
+                ),
+                Card(
+                    cardChild: buildGender([
+                  Icon(FontAwesomeIcons.venus, size: 80.0),
+                  SizedBox(height: 15.0),
+                  Text(
+                    'FEMALE',
+                    style: TextStyle(fontSize: 18.0, color: Color(0xFF8D8E98)),
+                  )
+                ]))
+              ],
             )),
             const Expanded(child: Card()),
             Expanded(
@@ -47,7 +63,8 @@ class _InputPageState extends State<InputPage> {
 }
 
 class Card extends StatelessWidget {
-  const Card({Key? key, this.color = Colors.black45, this.cardChild}) : super(key: key);
+  const Card({Key? key, this.color = Colors.black45, this.cardChild})
+      : super(key: key);
 
   final Color color;
   final Widget? cardChild;
