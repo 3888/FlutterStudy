@@ -24,7 +24,8 @@ class _InputPageState extends State<InputPage> {
         mainAxisAlignment: MainAxisAlignment.center, children: widgetList);
   }
 
-  Color cardColor = Colors.black45;
+  Color selectedColor = Colors.black12;
+  Color defaultColor = Colors.black45;
   Gender selectedGender = Gender.notSelected;
 
   @override
@@ -47,8 +48,9 @@ class _InputPageState extends State<InputPage> {
                       });
                     },
                     child: GenderCard(
-                      selectedGender: selectedGender,
-                      gender: Gender.male,
+                      color: selectedGender == Gender.male
+                          ? selectedColor
+                          : defaultColor,
                       cardChild: buildGender(FontAwesomeIcons.mars, 'MALE'),
                       // gender: Gender.male
                     ),
@@ -62,8 +64,9 @@ class _InputPageState extends State<InputPage> {
                       });
                     },
                     child: GenderCard(
-                      selectedGender: selectedGender,
-                      gender: Gender.female,
+                      color: selectedGender == Gender.female
+                          ? selectedColor
+                          : defaultColor,
                       cardChild: buildGender(FontAwesomeIcons.venus, 'FEMALE'),
                       // gender: Gender.female
                     ),
@@ -90,7 +93,6 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
-
 class Card extends StatelessWidget {
   const Card({Key? key, this.color = Colors.black45, this.cardChild})
       : super(key: key);
@@ -112,23 +114,14 @@ class Card extends StatelessWidget {
 enum Gender { male, female, notSelected }
 
 class GenderCard extends StatelessWidget {
-  const GenderCard(
-      {Key? key,
-      this.selectedGender = Gender.notSelected,
-      required this.gender,
-      this.cardChild})
+  const GenderCard({Key? key, required this.color, this.cardChild})
       : super(key: key);
 
-  final Gender selectedGender;
-  final Gender gender;
+  final Color color;
   final Widget? cardChild;
 
   @override
   Widget build(BuildContext context) {
-    var color = Colors.black45;
-
-    if (selectedGender == gender) color = Colors.black12;
-
     return Container(
       child: cardChild,
       margin: const EdgeInsets.all(15.0),
