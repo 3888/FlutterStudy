@@ -41,35 +41,31 @@ class _InputPageState extends State<InputPage> {
                 child: Row(
               children: [
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: GenderCard(
+                    color: selectedGender == Gender.male
+                        ? selectedColor
+                        : defaultColor,
+                    cardChild: buildGender(FontAwesomeIcons.mars, 'MALE'),
+                    onPress: () {
                       setState(() {
                         selectedGender = Gender.male;
                       });
                     },
-                    child: GenderCard(
-                      color: selectedGender == Gender.male
-                          ? selectedColor
-                          : defaultColor,
-                      cardChild: buildGender(FontAwesomeIcons.mars, 'MALE'),
-                      // gender: Gender.male
-                    ),
+                    // gender: Gender.male
                   ),
                 ),
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: GenderCard(
+                    color: selectedGender == Gender.female
+                        ? selectedColor
+                        : defaultColor,
+                    cardChild: buildGender(FontAwesomeIcons.venus, 'FEMALE'),
+                    onPress: () {
                       setState(() {
                         selectedGender = Gender.female;
                       });
                     },
-                    child: GenderCard(
-                      color: selectedGender == Gender.female
-                          ? selectedColor
-                          : defaultColor,
-                      cardChild: buildGender(FontAwesomeIcons.venus, 'FEMALE'),
-                      // gender: Gender.female
-                    ),
+                    // gender: Gender.female
                   ),
                 )
               ],
@@ -114,19 +110,24 @@ class Card extends StatelessWidget {
 enum Gender { male, female, notSelected }
 
 class GenderCard extends StatelessWidget {
-  const GenderCard({Key? key, required this.color, this.cardChild})
+  const GenderCard(
+      {Key? key, required this.color, this.cardChild, required this.onPress})
       : super(key: key);
 
   final Color color;
   final Widget? cardChild;
+  final void Function() onPress;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: cardChild,
-      margin: const EdgeInsets.all(15.0),
-      decoration: BoxDecoration(
-          color: color, borderRadius: BorderRadius.circular(10.0)),
+    return GestureDetector(
+      onTap: onPress,
+      child: Container(
+        child: cardChild,
+        margin: const EdgeInsets.all(15.0),
+        decoration: BoxDecoration(
+            color: color, borderRadius: BorderRadius.circular(10.0)),
+      ),
     );
   }
 }
