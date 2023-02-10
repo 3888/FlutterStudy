@@ -9,8 +9,18 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  buildGender(List<Widget> widgetList) =>
-      Column(mainAxisAlignment: MainAxisAlignment.center, children: widgetList);
+  buildGender(IconData icon, String text) {
+    var widgetList = [
+      Icon(icon, size: 80.0),
+      SizedBox(height: 15.0),
+      Text(
+        text,
+        style: TextStyle(fontSize: 18.0, color: Color(0xFF8D8E98)),
+      )
+    ];
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.center, children: widgetList);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,25 +35,11 @@ class _InputPageState extends State<InputPage> {
                 child: Row(
               children: [
                 Card(
-                  cardChild: buildGender([
-                    Icon(FontAwesomeIcons.mars, size: 80.0),
-                    SizedBox(height: 15.0),
-                    Text(
-                      'MALE',
-                      style:
-                          TextStyle(fontSize: 18.0, color: Color(0xFF8D8E98)),
-                    )
-                  ]),
+                  cardChild: buildGender(FontAwesomeIcons.mars, 'MALE'),
                 ),
                 Card(
-                    cardChild: buildGender([
-                  Icon(FontAwesomeIcons.venus, size: 80.0),
-                  SizedBox(height: 15.0),
-                  Text(
-                    'FEMALE',
-                    style: TextStyle(fontSize: 18.0, color: Color(0xFF8D8E98)),
-                  )
-                ]))
+                  cardChild: buildGender(FontAwesomeIcons.venus, 'FEMALE'),
+                )
               ],
             )),
             const Expanded(child: Card()),
