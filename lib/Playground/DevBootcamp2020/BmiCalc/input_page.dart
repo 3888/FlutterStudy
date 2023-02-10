@@ -44,7 +44,6 @@ class _InputPageState extends State<InputPage> {
                     onTap: () {
                       setState(() {
                         selectedGender = Gender.male;
-                        print("object male");
                       });
                     },
                     child: GenderCard(
@@ -60,7 +59,6 @@ class _InputPageState extends State<InputPage> {
                     onTap: () {
                       setState(() {
                         selectedGender = Gender.female;
-                        print("object female");
                       });
                     },
                     child: GenderCard(
@@ -92,7 +90,6 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
-enum Gender { male, female, notSelected }
 
 class Card extends StatelessWidget {
   const Card({Key? key, this.color = Colors.black45, this.cardChild})
@@ -111,6 +108,8 @@ class Card extends StatelessWidget {
     );
   }
 }
+
+enum Gender { male, female, notSelected }
 
 class GenderCard extends StatelessWidget {
   const GenderCard(
