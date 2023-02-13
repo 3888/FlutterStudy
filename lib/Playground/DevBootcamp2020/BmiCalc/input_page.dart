@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'components/reusable_card.dart';
+import 'components/round_icon_button.dart';
 import 'constants.dart';
 
 class InputPage extends StatefulWidget {
@@ -13,13 +14,12 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   buildGender(IconData icon, String text) {
-    var textStyle = const TextStyle(fontSize: 18.0, color: Color(0xFF8D8E98));
     var widgetList = [
       Icon(icon, size: 80.0),
       const SizedBox(height: 15.0),
       Text(
         text,
-        style: textStyle,
+        style: kLabelTextStyle,
       )
     ];
 
@@ -27,22 +27,49 @@ class _InputPageState extends State<InputPage> {
         mainAxisAlignment: MainAxisAlignment.center, children: widgetList);
   }
 
-  buildSelection(String text) {
-    var textStyle = const TextStyle(fontSize: 18.0, color: Color(0xFF8D8E98));
+  buildSelection(String text, int value, UserData userData) {
     var widgetList = [
-      const SizedBox(height: 15.0),
       Text(
-        text,
-        style: textStyle,
-      )
+        text.toUpperCase(),
+        style: kLabelTextStyle,
+      ),
+      Text(
+        value.toString(),
+        style: kNumberTextStyle,
+      ),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          RoundIconButton(
+              icon: FontAwesomeIcons.minus,
+              onPress: () {
+                setState(() {
+                  userData == UserData.weight ? weight-- : age--;
+                });
+              }),
+          SizedBox(
+            width: 10.0,
+          ),
+          RoundIconButton(
+            icon: FontAwesomeIcons.plus,
+            onPress: () {
+              setState(() {
+                userData == UserData.weight ? weight++ : age++;
+              });
+            },
+          ),
+        ],
+      ),
     ];
 
     return Column(
         mainAxisAlignment: MainAxisAlignment.center, children: widgetList);
   }
 
-  Gender selectedGender = Gender.notSelected;
+  UserData selectedGender = UserData.empty;
   int height = 180;
+  int weight = 60;
+  int age = 20;
 
   @override
   Widget build(BuildContext context) {
@@ -59,13 +86,13 @@ class _InputPageState extends State<InputPage> {
               children: [
                 Expanded(
                   child: ReusableCard(
-                    color: selectedGender == Gender.male
+                    color: selectedGender == UserData.male
                         ? kActiveCardColour
                         : kInactiveCardColour,
                     cardChild: buildGender(FontAwesomeIcons.mars, 'MALE'),
                     onPress: () {
                       setState(() {
-                        selectedGender = Gender.male;
+                        selectedGender = UserData.male;
                       });
                     },
                     // gender: Gender.male
@@ -73,13 +100,13 @@ class _InputPageState extends State<InputPage> {
                 ),
                 Expanded(
                   child: ReusableCard(
-                    color: selectedGender == Gender.female
+                    color: selectedGender == UserData.female
                         ? kActiveCardColour
                         : kInactiveCardColour,
                     cardChild: buildGender(FontAwesomeIcons.venus, 'FEMALE'),
                     onPress: () {
                       setState(() {
-                        selectedGender = Gender.female;
+                        selectedGender = UserData.female;
                       });
                     },
                   ),
@@ -137,10 +164,24 @@ class _InputPageState extends State<InputPage> {
               ),
             )),
             Expanded(
-              child: ReusableCard(
-                color: kActiveCardColour,
-                cardChild: buildSelection('AGE'),
-                // gender: Gender.male
+              child: Row(
+                children: [
+                  Expanded(
+                    child: ReusableCard(
+                      color: kActiveCardColour,
+                      cardChild:
+                          buildSelection('Weight', weight, UserData.weight),
+                      // gender: Gender.male
+                    ),
+                  ),
+                  Expanded(
+                    child: ReusableCard(
+                      color: kActiveCardColour,
+                      cardChild: buildSelection('Age', age, UserData.age),
+                      // gender: Gender.male
+                    ),
+                  ),
+                ],
               ),
             ),
             Container(

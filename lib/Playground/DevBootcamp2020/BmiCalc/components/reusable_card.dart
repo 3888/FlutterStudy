@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-enum Gender { male, female, notSelected }
+enum UserData { empty, male, female, weight, age }
 
 class ReusableCard extends StatelessWidget {
   buildGender(IconData icon, String text) {
