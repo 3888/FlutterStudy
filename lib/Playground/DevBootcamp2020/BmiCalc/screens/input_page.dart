@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:learn_flutter/Playground/DevBootcamp2020/BmiCalc/calculator_brain.dart';
+import 'package:learn_flutter/Playground/DevBootcamp2020/BmiCalc/components/bottom_button.dart';
+import 'package:learn_flutter/Playground/DevBootcamp2020/BmiCalc/screens/results_page.dart';
 
-import 'components/reusable_card.dart';
-import 'components/round_icon_button.dart';
-import 'constants.dart';
+import '../components/reusable_card.dart';
+import '../components/round_icon_button.dart';
+import '../constants.dart';
 
 class InputPage extends StatefulWidget {
   const InputPage({Key? key}) : super(key: key);
@@ -184,12 +187,20 @@ class _InputPageState extends State<InputPage> {
                 ],
               ),
             ),
-            Container(
-              color: Colors.red,
-              width: double.infinity,
-              height: 80.0,
-              margin: const EdgeInsets.only(top: 10.0),
-            )
+            BottomButton(
+                buttonTitle: 'CALCULATE',
+                onTap: () {
+                  CalculatorBrain calc =
+                      CalculatorBrain(height: height, weight: weight);
+
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ResultsPage(
+                              interpretation: calc.calculateBMI(),
+                              bmiResult: calc.getResult(),
+                              resultText: calc.getInterpretation())));
+                })
           ],
         ));
   }

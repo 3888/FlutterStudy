@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'input_page.dart';
+import 'screens/input_page.dart';
 
 class BMICalculator extends StatelessWidget {
   const BMICalculator({Key? key}) : super(key: key);
