@@ -87,8 +87,9 @@ class _InputPageState extends State<InputPage> {
               ],
             )),
             Expanded(
-                child: Card(
-              child: Column(
+                child: ReusableCard(
+              color: kActiveCardColour,
+              cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
