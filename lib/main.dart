@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'Playground/DevBootcamp2020/BmiCalc/bmi_calc_app.dart';
-
+import 'package:learn_flutter/Playground/DevBootcamp2020/Clima/clima_app.dart';
 
 void main() {
   runApp(
@@ -16,6 +14,6 @@ void main() {
       // XylophoneApp()
       // Quizzler()
       // DestiniApp()
-      const BMICalculator()
-      );
+      // const BMICalculator()
+      ClimaApp());
 }
