@@ -5,10 +5,10 @@ import '../components/reusable_card.dart';
 import '../constants.dart';
 
 class ResultsPage extends StatelessWidget {
-  ResultsPage(
-      {required this.interpretation,
+  const ResultsPage(
+      {Key? key, required this.interpretation,
       required this.bmiResult,
-      required this.resultText});
+      required this.resultText}) : super(key: key);
 
   final String bmiResult;
   final String resultText;

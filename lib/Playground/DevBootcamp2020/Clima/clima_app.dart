@@ -3,6 +3,8 @@ import 'package:learn_flutter/Playground/DevBootcamp2020/Clima/screens/loading_s
 
 
 class ClimaApp extends StatelessWidget {
+  const ClimaApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

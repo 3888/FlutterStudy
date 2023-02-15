@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../utilities/constants.dart';
 
 class LocationScreen extends StatefulWidget {
+  const LocationScreen({Key? key}) : super(key: key);
+
   @override
   _LocationScreenState createState() => _LocationScreenState();
 }
@@ -48,7 +50,7 @@ class _LocationScreenState extends State<LocationScreen> {
               Padding(
                 padding: EdgeInsets.only(left: 15.0),
                 child: Row(
-                  children: <Widget>[
+                  children: const <Widget>[
                     Text(
                       '32°',
                       style: kTempTextStyle,
