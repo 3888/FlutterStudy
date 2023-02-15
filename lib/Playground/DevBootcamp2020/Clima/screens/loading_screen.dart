@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 
 import '../services/location.dart';
 
@@ -13,7 +12,7 @@ class LoadingScreen extends StatefulWidget {
 class _LoadingScreenState extends State<LoadingScreen> {
   Future<void> getLocation() async {
     GeolocatorService service = GeolocatorService();
-    Position? position = await service.determinePosition();
+    await service.getCurrentLocation();
   }
 
   @override
