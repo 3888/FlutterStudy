@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:learn_flutter/Playground/DevBootcamp2020/Clima/clima_app.dart';
 import 'package:fimber/fimber.dart';
+
+import 'Playground/DevBootcamp2020/BitcoinTicker/BitcoinTikerApp.dart';
 
 void main() {
   Fimber.plantTree(DebugTree());
@@ -12,10 +13,11 @@ void main() {
       //   const RowExample()
       //   miCard()
       // DiceApp()
-      // const MagicBallApp()
+      //  MagicBallApp()
       // XylophoneApp()
       // Quizzler()
       // DestiniApp()
-      // const BMICalculator()
-      ClimaApp());
+      //  BMICalculator()
+      // ClimaApp())
+      BitcoinTickerApp());
 }

@@ -17,7 +17,7 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   buildGender(IconData icon, String text) {
-    var widgetList = [
+    List<Widget> widgetList = [
       Icon(icon, size: 80.0),
       const SizedBox(height: 15.0),
       Text(
