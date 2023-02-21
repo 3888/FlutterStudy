@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learn_flutter/Playground/DevBootcamp2020/BitcoinTicker/coin_data.dart';
+import 'package:learn_flutter/Playground/DevBootcamp2020/BitcoinTicker/services/CoinApiRepository.dart';
 
 class PriceScreen extends StatefulWidget {
   @override
@@ -8,6 +9,7 @@ class PriceScreen extends StatefulWidget {
 
 class _PriceScreenState extends State<PriceScreen> {
   var selectedCurrency = "USD";
+  String textBTC = "";
 
   List<DropdownMenuItem<String>> getMenuItems() {
     var menuItems = <DropdownMenuItem<String>>[];
@@ -19,8 +21,18 @@ class _PriceScreenState extends State<PriceScreen> {
     return menuItems;
   }
 
+  void getExchangerate() async {
+    var responce = await CoinApiRepository().fetchCurrency("BTC", "USD");
+
+    setState(() {
+      textBTC = "1 ${responce!.assetIdBase} = ${responce.assetIdQuote}";
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    if (textBTC.isEmpty) getExchangerate();
+
     return Scaffold(
       appBar: AppBar(
         title: Text('🤑 Coin Ticker'),
@@ -40,7 +52,7 @@ class _PriceScreenState extends State<PriceScreen> {
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
                 child: Text(
-                  '1 BTC = ? USD',
+                  textBTC,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20.0,

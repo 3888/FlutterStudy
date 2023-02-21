@@ -5,7 +5,7 @@ import 'package:learn_flutter/Playground/FlutterLab/API/LoggingInterceptor.dart'
 
 import 'WeatherApiInterceptor.dart';
 
-const baseUrl = 'https://api.openweathermap.org/data/2.5/';
+const baseUrl = 'https://api.openweathermap.org/data/2.5';
 const apiKey = 'a88c60cf943d3e22aa28cadb6ece37b0';
 
 class WeatherRepository {
