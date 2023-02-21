@@ -5,7 +5,7 @@ final player = AudioPlayer();
 
 Future<void> playSoundByNumber(int soundNumber) async {
   await player.stop();
-  await player.play(AssetSource('note$soundNumber'));
+  await player.play(AssetSource('note$soundNumber.wav'));
 }
 
 ButtonStyle raisedButtonStyle(Color background) => ElevatedButton.styleFrom(
