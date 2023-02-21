@@ -31,7 +31,7 @@ class _PriceScreenState extends State<PriceScreen> {
 
   @override
   Widget build(BuildContext context) {
-    if (textBTC.isEmpty) getExchangerate();
+    // if (textBTC.isEmpty) getExchangerate();
 
     return Scaffold(
       appBar: AppBar(
@@ -51,12 +51,17 @@ class _PriceScreenState extends State<PriceScreen> {
               ),
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
-                child: Text(
-                  textBTC,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    color: Colors.white,
+                child: TextButton(
+                  onPressed: () {
+                    getExchangerate();
+                  },
+                  child: Text(
+                    textBTC,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
