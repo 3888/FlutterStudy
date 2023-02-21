@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:learn_flutter/Playground/DevBootcamp2020/BitcoinTicker/coin_data.dart';
-import 'package:learn_flutter/Playground/DevBootcamp2020/BitcoinTicker/services/CoinApiRepository.dart';
 
 class PriceScreen extends StatefulWidget {
   @override
@@ -8,8 +7,9 @@ class PriceScreen extends StatefulWidget {
 }
 
 class _PriceScreenState extends State<PriceScreen> {
-  var selectedCurrency = "USD";
-  String textBTC = "";
+  String textBTC = "textBTC";
+  String textETC = "textETC";
+  String textLTC = "textLTC";
 
   List<DropdownMenuItem<String>> getMenuItems() {
     var menuItems = <DropdownMenuItem<String>>[];
@@ -21,17 +21,31 @@ class _PriceScreenState extends State<PriceScreen> {
     return menuItems;
   }
 
-  void getExchangerate() async {
-    var responce = await CoinApiRepository().fetchCurrency("BTC", "USD");
+  getExchangeRate(Crypto basePath, Currency quotePath) async {
+    // var response = await CoinApiRepository()
+    //     .fetchCurrency(basePath.value, quotePath.value);
 
     setState(() {
-      textBTC = "1 ${responce!.assetIdBase} = ${responce.assetIdQuote}";
+      String text = "$basePath $quotePath";
+      // "1 ${response.assetIdBase} = ${response.rate.round()} ${response.assetIdQuote}";
+      switch (basePath) {
+        case Crypto.btc:
+          textBTC = text;
+          break;
+        case Crypto.etc:
+          textETC = text;
+          break;
+        case Crypto.ltc:
+          textLTC = text;
+          break;
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    // if (textBTC.isEmpty) getExchangerate();
+    // if (textBTC.isEmpty)
+    getExchangeRate(Crypto.btc, Currency.EUR);
 
     return Scaffold(
       appBar: AppBar(
@@ -43,28 +57,65 @@ class _PriceScreenState extends State<PriceScreen> {
         children: <Widget>[
           Padding(
             padding: EdgeInsets.fromLTRB(18.0, 18.0, 18.0, 0),
-            child: Card(
-              color: Colors.lightBlueAccent,
-              elevation: 5.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
-                child: TextButton(
-                  onPressed: () {
-                    getExchangerate();
-                  },
-                  child: Text(
-                    textBTC,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      color: Colors.white,
+            child: Column(
+              children: [
+                Card(
+                  color: Colors.lightBlueAccent,
+                  elevation: 5.0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
+                    child: Text(
+                      textBTC,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),
-              ),
+                SizedBox(height: 30),
+                Card(
+                  color: Colors.lightBlueAccent,
+                  elevation: 5.0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
+                    child: Text(
+                      textETC,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 30),
+                Card(
+                  color: Colors.lightBlueAccent,
+                  elevation: 5.0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
+                    child: Text(
+                      textLTC,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
           Container(
@@ -73,7 +124,7 @@ class _PriceScreenState extends State<PriceScreen> {
             padding: EdgeInsets.only(bottom: 30.0),
             color: Colors.lightBlue,
             child: DropdownButton<String>(
-              value: selectedCurrency,
+              value: Currency.USD.value,
               items: getMenuItems(),
               onChanged: (value) {},
             ),

@@ -15,7 +15,7 @@ class CoinApiRepository {
   InterceptedClient client = InterceptedClient.build(
       interceptors: [CoinApiInterceptor(), LoggingInterceptor()]);
 
-  Future<ExchangerateModel?> fetchCurrency(
+  Future<ExchangerateModel> fetchCurrency(
       String basePath, String quotePath) async {
     var parsedResponse;
     try {

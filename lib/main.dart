@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fimber/fimber.dart';
 
 import 'Playground/DevBootcamp2020/BitcoinTicker/BitcoinTikerApp.dart';
+import 'Playground/DevBootcamp2020/Xylophone/xylophone_app.dart';
 
 void main() {
   Fimber.plantTree(DebugTree());
@@ -14,10 +15,11 @@ void main() {
       //   miCard()
       // DiceApp()
       //  MagicBallApp()
-      // XylophoneApp()
+      // xylophoneApp()
       // Quizzler()
       // DestiniApp()
       //  BMICalculator()
       // ClimaApp())
-      BitcoinTickerApp());
+      BitcoinTickerApp()
+      );
 }
