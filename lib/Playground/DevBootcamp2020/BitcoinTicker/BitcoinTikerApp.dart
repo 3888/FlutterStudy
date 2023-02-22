@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learn_flutter/Playground/DevBootcamp2020/BitcoinTicker/screens/price_screen.dart';
+import 'package:learn_flutter/Playground/DevBootcamp2020/BitcoinTicker/screens/exchange_rates/price_screen.dart';
 import 'package:oktoast/oktoast.dart';
 
 import 'miui10_anim.dart';
