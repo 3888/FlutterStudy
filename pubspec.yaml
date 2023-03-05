@@ -44,7 +44,7 @@ dependencies:
   oktoast: ^3.3.1
   fimber: ^0.6.6
 
-
+  animated_text_kit: ^4.2.2
 
 dev_dependencies:
   flutter_test:
