@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:learn_flutter/Playground/DevBootcamp2020/BitcoinTicker/coin_app_constants.dart';
 import 'package:learn_flutter/Playground/DevBootcamp2020/BitcoinTicker/services/coin_data.dart';
 
+import '../../services/CoinApiRepository.dart';
 import 'reusable_coin_card.dart';
 
 class PriceScreen extends StatefulWidget {
@@ -34,11 +35,12 @@ class _PriceScreenState extends State<PriceScreen> {
   }
 
   getExchangeRate(Crypto basePath, String quotePath) async {
-    // var response =
-    // await CoinApiRepository().fetchCurrency(basePath.value, quotePath);
+    var response =
+    await CoinApiRepository().fetchCurrency(basePath.value, quotePath);
 
     setState(() {
-      String text = "Fake data $basePath $quotePath";
+      String text =
+      "Fake data $basePath $quotePath";
       // "1 ${response.assetIdBase} = ${response.rate.round()} ${response.assetIdQuote}";
       switch (basePath) {
         case Crypto.btc:

@@ -30,6 +30,10 @@ dependencies:
   flutter:
     sdk: flutter
 
+  firebase_core: ^2.7.0
+  firebase_auth: ^4.2.9
+  cloud_firestore: ^4.4.3
+
   audioplayers: ^3.0.1
 
   cupertino_icons: ^1.0.2

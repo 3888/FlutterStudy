@@ -43,6 +43,7 @@ android {
     }
 
     defaultConfig {
+        multiDexEnabled true
         applicationId "com.example.learn_flutter"
         minSdkVersion 19
         targetSdkVersion flutter.targetSdkVersion

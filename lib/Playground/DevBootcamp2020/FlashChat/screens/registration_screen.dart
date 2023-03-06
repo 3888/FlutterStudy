@@ -1,3 +1,5 @@
+import 'package:fimber/fimber.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:learn_flutter/Playground/DevBootcamp2020/FlashChat/screens/components/ActionButton.dart';
 
@@ -11,6 +13,11 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
+  var logger = FimberLog("TAG_REGISTRATION");
+  final _auth = FirebaseAuth.instance;
+  var email = "";
+  var password = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,8 +39,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               height: 48.0,
             ),
             TextField(
+              keyboardType: TextInputType.emailAddress,
+              textAlign: TextAlign.center,
               onChanged: (value) {
-                //Do something with the user input.
+                email = value;
               },
               decoration:
                   kTextFieldDecoration('Enter your email', Colors.blueAccent),
@@ -42,8 +51,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               height: 8.0,
             ),
             TextField(
+              textAlign: TextAlign.center,
+              obscureText: true,
               onChanged: (value) {
-                //Do something with the user input.
+                password = value;
               },
               decoration: kTextFieldDecoration(
                   'Enter your password', Colors.blueAccent),
@@ -52,7 +63,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               height: 24.0,
             ),
             ActionButton(
-                text: 'Register', color: Colors.blueAccent, onPress: () {})
+                text: 'Register',
+                color: Colors.blueAccent,
+                onPress: () async {
+                  try {
+                    final newUser = await _auth.createUserWithEmailAndPassword(
+                        email: email, password: password);
+                  } catch (e) {
+                    logger.e(e.toString());
+                  }
+                })
           ],
         ),
       ),
