@@ -1,7 +1,11 @@
+import 'package:fimber/fimber.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:learn_flutter/Playground/DevBootcamp2020/FlashChat/screens/components/ActionButton.dart';
+import 'package:oktoast/oktoast.dart';
 
 import '../flash_chat_constatns.dart';
+import 'chat_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   static const id = "login_sreen";
@@ -11,6 +15,11 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  var logger = FimberLog("TAG_LOGIN");
+  final _auth = FirebaseAuth.instance;
+  var email = "";
+  var password = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
               keyboardType: TextInputType.emailAddress,
               textAlign: TextAlign.center,
               onChanged: (value) {
-                //Do something with the user input.
+                email = value;
               },
               decoration: kTextFieldDecoration(
                   'Enter your email', Colors.lightBlueAccent),
@@ -47,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 textAlign: TextAlign.center,
                 obscureText: true,
                 onChanged: (value) {
-                  //Do something with the user input.
+                  password = value;
                 },
                 decoration: kTextFieldDecoration(
                     'Enter your password', Colors.lightBlueAccent)),
@@ -55,7 +64,27 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 24.0,
             ),
             ActionButton(
-                text: 'Log in', color: Colors.lightBlueAccent, onPress: () {}),
+                text: 'Log in',
+                color: Colors.lightBlueAccent,
+                onPress: () async {
+                  try {
+                    final signIn = await _auth.signInWithEmailAndPassword(
+                        email: email, password: password);
+
+                    if (signIn != null) {
+                      Navigator.pushNamed(context, ChatScreen.id);
+                    }
+                  } on FirebaseAuthException catch (e) {
+                    logger.e(e.toString());
+                    var message = e.toString();
+                    if (e.code == 'user-not-found') {
+                      message = 'No user found for that email.';
+                    } else if (e.code == 'wrong-password') {
+                      message = 'Wrong password provided for that user.';
+                    }
+                    showToast(message);
+                  }
+                }),
           ],
         ),
       ),
