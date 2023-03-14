@@ -69,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 onPress: () async {
                   try {
                     final signIn = await _auth.signInWithEmailAndPassword(
-                        email: email, password: password);
+                        email: "qwerty@qq.qq", password: "qwerty");
 
                     if (signIn != null) {
                       Navigator.pushNamed(context, ChatScreen.id);
