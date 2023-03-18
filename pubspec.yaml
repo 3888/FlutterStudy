@@ -55,6 +55,7 @@ dependencies:
   oktoast: ^3.3.1
   fimber: ^0.6.6
 
+#RX logic
   provider: ^6.0.5
 
 dev_dependencies:

@@ -38,6 +38,10 @@ class AddTaskScreen extends StatelessWidget {
               },
             ),
             TextButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(Colors.lightBlueAccent),
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+              ),
               child: Text(
                 'Add',
                 style: TextStyle(
@@ -46,8 +50,9 @@ class AddTaskScreen extends StatelessWidget {
               ),
               // color: Colors.lightBlueAccent,
               onPressed: () {
-                Provider.of<TaskData>(context).addTask(newTaskTitle);
+                Provider.of<TaskData>(context, listen: false).addTask(newTaskTitle);
                 Navigator.pop(context);
+              //  TODO add noSQL
               },
             ),
           ],
