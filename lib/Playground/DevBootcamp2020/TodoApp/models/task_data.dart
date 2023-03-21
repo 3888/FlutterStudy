@@ -1,16 +1,15 @@
-import 'package:flutter/foundation.dart';
 import 'dart:collection';
 
-import 'package:learn_flutter/Playground/DevBootcamp2020/TodoApp/models/task.dart';
+import 'package:flutter/foundation.dart';
+
+import '../db/notes_database.dart';
+import 'note.dart';
+
 
 class TaskData extends ChangeNotifier {
-  List<Task> _tasks = [
-    Task(name: 'Buy milk'),
-    Task(name: 'Buy eggs'),
-    Task(name: 'Buy bread'),
-  ];
+  List<Note> _tasks = [];
 
-  UnmodifiableListView<Task> get tasks {
+  UnmodifiableListView<Note> get tasks {
     return UnmodifiableListView(_tasks);
   }
 
@@ -19,18 +18,29 @@ class TaskData extends ChangeNotifier {
   }
 
   void addTask(String newTaskTitle) {
-    final task = Task(name: newTaskTitle);
-    _tasks.add(task);
+    _addNote(Note(
+      description: newTaskTitle,
+      isDone: false,
+    ));
+    refreshNotes();
     notifyListeners();
   }
 
-  void updateTask(Task task) {
-    task.toggleDone();
+  void updateTask(Note task) {
+    // task.toggleDone();
     notifyListeners();
   }
 
-  void deleteTask(Task task) {
+  void deleteTask(Note task) {
     _tasks.remove(task);
     notifyListeners();
+  }
+
+  Future refreshNotes() async {
+    this._tasks = await NotesDatabase.instance.readAllNotes();
+  }
+
+  Future _addNote(Note note) async {
+    await NotesDatabase.instance.create(note);
   }
 }
