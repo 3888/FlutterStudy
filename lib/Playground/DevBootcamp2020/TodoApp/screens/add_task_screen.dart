@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../models/task.dart';
 import '../models/task_data.dart';
 
 class AddTaskScreen extends StatelessWidget {
@@ -39,7 +40,8 @@ class AddTaskScreen extends StatelessWidget {
             ),
             TextButton(
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(Colors.lightBlueAccent),
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(Colors.lightBlueAccent),
                 foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
               ),
               child: Text(
@@ -50,9 +52,9 @@ class AddTaskScreen extends StatelessWidget {
               ),
               // color: Colors.lightBlueAccent,
               onPressed: () {
-                Provider.of<TaskData>(context, listen: false).addTask(newTaskTitle);
+                Provider.of<TaskData>(context, listen: false)
+                    .addTask(Task(isDone: false, description: newTaskTitle));
                 Navigator.pop(context);
-              //  TODO add noSQL
               },
             ),
           ],

@@ -1,29 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../db/notes_database.dart';
-import '../models/note.dart';
+import '../db/tasks_database.dart';
+import '../models/task.dart';
 import '../models/task_data.dart';
 import '../widgets/tasks_list.dart';
 import 'add_task_screen.dart';
 
 class TasksScreen extends StatefulWidget {
   @override
-  _NotesPageState createState() => _NotesPageState();
+  _TasksPageState createState() => _TasksPageState();
 }
 
-class _NotesPageState extends State<TasksScreen> {
-  late List<Note> notes;
+class _TasksPageState extends State<TasksScreen> {
+  late List<Task> tasks;
 
   @override
   void initState() {
     super.initState();
-    TaskData().refreshNotes();
+    TaskData().refreshTasksFromDB();
   }
 
   @override
   void dispose() {
-    NotesDatabase.instance.close();
+    TodoTasksDatabase.instance.close();
 
     super.dispose();
   }

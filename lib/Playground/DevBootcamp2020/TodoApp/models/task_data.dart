@@ -2,14 +2,14 @@ import 'dart:collection';
 
 import 'package:flutter/foundation.dart';
 
-import '../db/notes_database.dart';
-import 'note.dart';
-
+import '../db/tasks_database.dart';
+import 'task.dart';
 
 class TaskData extends ChangeNotifier {
-  List<Note> _tasks = [];
+  List<Task> _tasks = [];
 
-  UnmodifiableListView<Note> get tasks {
+  UnmodifiableListView<Task> get tasks {
+    refreshTasksFromDB();
     return UnmodifiableListView(_tasks);
   }
 
@@ -17,30 +17,22 @@ class TaskData extends ChangeNotifier {
     return _tasks.length;
   }
 
-  void addTask(String newTaskTitle) {
-    _addNote(Note(
-      description: newTaskTitle,
-      isDone: false,
-    ));
-    refreshNotes();
-    notifyListeners();
+  Future refreshTasksFromDB() async {
+    _tasks = await TodoTasksDatabase.instance.readAllTasks();
   }
 
-  void updateTask(Note task) {
+  Future addTask(Task task) async {
+    await TodoTasksDatabase.instance.create(task);
+    refreshTasksFromDB();
+  }
+
+  void updateTask(Task task) {
     // task.toggleDone();
     notifyListeners();
   }
 
-  void deleteTask(Note task) {
+  void deleteTask(Task task) {
     _tasks.remove(task);
     notifyListeners();
-  }
-
-  Future refreshNotes() async {
-    this._tasks = await NotesDatabase.instance.readAllNotes();
-  }
-
-  Future _addNote(Note note) async {
-    await NotesDatabase.instance.create(note);
   }
 }
