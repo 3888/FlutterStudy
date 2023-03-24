@@ -9,7 +9,6 @@ class TaskData extends ChangeNotifier {
   List<Task> _tasks = [];
 
   UnmodifiableListView<Task> get tasks {
-    refreshTasksFromDB();
     return UnmodifiableListView(_tasks);
   }
 
@@ -18,7 +17,9 @@ class TaskData extends ChangeNotifier {
   }
 
   Future refreshTasksFromDB() async {
-    _tasks = await TodoTasksDatabase.instance.readAllTasks();
+    final dataList = await TodoTasksDatabase.instance.readAllTasks();
+    _tasks = dataList;
+    notifyListeners();
   }
 
   Future addTask(Task task) async {
