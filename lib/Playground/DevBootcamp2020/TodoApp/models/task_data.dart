@@ -27,13 +27,18 @@ class TaskData extends ChangeNotifier {
     refreshTasksFromDB();
   }
 
-  void updateTask(Task task) {
-    // task.toggleDone();
+  Future updateTask(Task task) async {
+    await TodoTasksDatabase.instance.update(task);
+    task.toggleDone();
     notifyListeners();
   }
 
-  void deleteTask(Task task) {
-    _tasks.remove(task);
+  Future deleteTask(Task task) async {
+    var id = task.id;
+    if (id != null) {
+      await TodoTasksDatabase.instance.delete(id);
+      _tasks.remove(task);
+    }
     notifyListeners();
   }
 }

@@ -13,14 +13,18 @@ class TaskFields {
 
 class Task {
   final int? id;
-  final bool isDone;
+  bool isDone;
   final String description;
 
-  const Task({
+  Task({
     this.id,
     required this.isDone,
     required this.description,
   });
+
+  void toggleDone() {
+    isDone = !isDone;
+  }
 
   Task copy({
     int? id,
