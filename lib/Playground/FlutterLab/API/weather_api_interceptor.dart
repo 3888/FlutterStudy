@@ -1,4 +1,7 @@
+import 'package:fimber/fimber.dart';
 import 'package:http_interceptor/http_interceptor.dart';
+
+var logger = FimberLog("TAG_NETWORK");
 
 class WeatherApiInterceptor implements InterceptorContract {
   @override
@@ -8,11 +11,12 @@ class WeatherApiInterceptor implements InterceptorContract {
       data.params['units'] = 'metric';
       data.headers["Content-Type"] = "application/json";
     } catch (e) {
-      print(e);
+      logger.e(e.toString());
     }
     return data;
   }
 
   @override
-  Future<ResponseData> interceptResponse({required ResponseData data}) async => data;
+  Future<ResponseData> interceptResponse({required ResponseData data}) async =>
+      data;
 }

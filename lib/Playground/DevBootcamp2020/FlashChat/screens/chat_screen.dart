@@ -13,6 +13,8 @@ var logger = FimberLog("TAG_CHAT");
 class ChatScreen extends StatefulWidget {
   static const String id = 'chat_screen';
 
+  const ChatScreen({super.key});
+
   @override
   _ChatScreenState createState() => _ChatScreenState();
 }
@@ -24,7 +26,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   void getCurrentUser() async {
     try {
-      final user = await _auth.currentUser;
+      final user = _auth.currentUser;
       if (user != null) {
         loggedInUser = user;
       }
@@ -100,6 +102,8 @@ class _ChatScreenState extends State<ChatScreen> {
 }
 
 class MessagesStream extends StatelessWidget {
+  const MessagesStream({super.key});
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -144,7 +148,7 @@ class MessagesStream extends StatelessWidget {
 }
 
 class MessageBubble extends StatelessWidget {
-  MessageBubble({required this.sender, required this.text, required this.isMe});
+  const MessageBubble({super.key, required this.sender, required this.text, required this.isMe});
 
   final String sender;
   final String text;

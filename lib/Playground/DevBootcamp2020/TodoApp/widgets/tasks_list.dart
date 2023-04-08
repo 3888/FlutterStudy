@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 import '../models/task_data.dart';
 
 class TasksList extends StatelessWidget {
+  const TasksList({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Consumer<TaskData>(

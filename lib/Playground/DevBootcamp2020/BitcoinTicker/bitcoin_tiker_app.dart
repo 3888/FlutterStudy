@@ -5,6 +5,8 @@ import 'package:oktoast/oktoast.dart';
 import 'miui10_anim.dart';
 
 class BitcoinTickerApp extends StatelessWidget {
+  const BitcoinTickerApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return OKToast(

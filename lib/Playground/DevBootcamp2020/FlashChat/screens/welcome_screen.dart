@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:learn_flutter/Playground/DevBootcamp2020/FlashChat/screens/login_screen.dart';
 import 'package:learn_flutter/Playground/DevBootcamp2020/FlashChat/screens/registration_screen.dart';
 
-import 'components/ActionButton.dart';
+import 'components/action_button.dart';
 
 class WelcomeScreen extends StatefulWidget {
   static const String id = 'welcome_screen';
+
+  const WelcomeScreen({super.key});
 
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
@@ -18,6 +20,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
 
   @override
   void initState() {
+    super.initState();
     controller = AnimationController(
         duration: Duration(seconds: 1), vsync: this, upperBound: 100.0);
 
@@ -41,7 +44,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
               children: <Widget>[
                 Hero(
                   tag: 'logo',
-                  child: Container(
+                  child: SizedBox(
                     child: Image.asset('images/logo.png'),
                     height: 60.0,
                   ),

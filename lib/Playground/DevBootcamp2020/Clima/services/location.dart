@@ -1,4 +1,7 @@
+import 'package:fimber/fimber.dart';
 import 'package:geolocator/geolocator.dart';
+
+var logger = FimberLog("TAG_LOCATION");
 
 class Location {
   late double latitude;
@@ -30,7 +33,7 @@ class Location {
       latitude = position.latitude;
       longitude = position.longitude;
     } catch (e) {
-      print(e);
+      logger.e(e.toString());
     }
   }
 }

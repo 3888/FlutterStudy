@@ -5,6 +5,8 @@ import '../models/task.dart';
 import '../models/task_data.dart';
 
 class AddTaskScreen extends StatelessWidget {
+  const AddTaskScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     var newTaskTitle = '';

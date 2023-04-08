@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:learn_flutter/Playground/DevBootcamp2020/BitcoinTicker/coin_app_constants.dart';
 import 'package:learn_flutter/Playground/DevBootcamp2020/BitcoinTicker/services/coin_data.dart';
 
-import '../../services/CoinApiRepository.dart';
+import '../../services/coin_api_repository.dart';
 import 'reusable_coin_card.dart';
 
 class PriceScreen extends StatefulWidget {
@@ -40,8 +40,8 @@ class _PriceScreenState extends State<PriceScreen> {
 
     setState(() {
       String text =
-      "Fake data $basePath $quotePath";
-      // "1 ${response.assetIdBase} = ${response.rate.round()} ${response.assetIdQuote}";
+      // "Fake data $basePath $quotePath";
+      "1 ${response.assetIdBase} = ${response.rate.round()} ${response.assetIdQuote}";
       switch (basePath) {
         case Crypto.btc:
           textBTC = text;
@@ -58,8 +58,9 @@ class _PriceScreenState extends State<PriceScreen> {
 
   @override
   void initState() {
+    super.initState();
     for (Crypto item in Crypto.values) {
-      getExchangeRate(item, Currency.USD.value);
+      getExchangeRate(item, Currency.usd.value);
     }
   }
 
@@ -95,7 +96,7 @@ class _PriceScreenState extends State<PriceScreen> {
                 canvasColor: Colors.lightBlueAccent,
               ),
               child: DropdownButton<String>(
-                value: Currency.USD.value,
+                value: Currency.usd.value,
                 items: getMenuItems(),
                 onChanged: (value) {
                   if (value != null && value.isNotEmpty) {

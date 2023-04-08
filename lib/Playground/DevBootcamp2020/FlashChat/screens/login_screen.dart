@@ -1,7 +1,7 @@
 import 'package:fimber/fimber.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:learn_flutter/Playground/DevBootcamp2020/FlashChat/screens/components/ActionButton.dart';
+import 'package:learn_flutter/Playground/DevBootcamp2020/FlashChat/screens/components/action_button.dart';
 import 'package:oktoast/oktoast.dart';
 
 import '../flash_chat_constatns.dart';
@@ -9,6 +9,8 @@ import 'chat_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   static const id = "login_sreen";
+
+  const LoginScreen({super.key});
 
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -33,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Flexible(
               child: Hero(
                 tag: 'logo',
-                child: Container(
+                child: SizedBox(
                   height: 200.0,
                   child: Image.asset('images/logo.png'),
                 ),
@@ -70,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 color: Colors.lightBlueAccent,
                 onPress: () async {
                   try {
-                    final signIn = await _auth.signInWithEmailAndPassword(
+                    final UserCredential? signIn  = await _auth.signInWithEmailAndPassword(
                         email: "qwerty@qq.qq", password: "qwerty");
 
                     if (signIn != null) {

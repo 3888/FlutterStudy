@@ -1,21 +1,21 @@
 import 'dart:convert';
 
+import 'package:fimber/fimber.dart';
 import 'package:http_interceptor/http_interceptor.dart';
-import 'package:learn_flutter/Playground/FlutterLab/API/LoggingInterceptor.dart';
+import 'package:learn_flutter/Playground/FlutterLab/API/logging_interceptor.dart';
 
-import 'WeatherApiInterceptor.dart';
+import 'weather_api_interceptor.dart';
 
 const baseUrl = 'https://api.openweathermap.org/data/2.5';
 const apiKey = 'a88c60cf943d3e22aa28cadb6ece37b0';
+var logger = FimberLog("TAG_WEATHER");
 
 class WeatherRepository {
-  InterceptedClient client = InterceptedClient.build(interceptors: [
-    WeatherApiInterceptor(),
-    LoggingInterceptor()
-  ]);
+  InterceptedClient client = InterceptedClient.build(
+      interceptors: [WeatherApiInterceptor(), LoggingInterceptor()]);
 
   Future<Map<String, dynamic>> fetchCityWeather(String city) async {
-    var parsedWeather;
+    dynamic parsedWeather;
     try {
       final response =
           await client.get("$baseUrl/weather".toUri(), params: {'q': city});
@@ -25,7 +25,7 @@ class WeatherRepository {
         throw Exception("Error while fetching. \n ${response.body}");
       }
     } catch (e) {
-      print(e);
+      logger.e(e.toString());
     }
     return parsedWeather;
   }

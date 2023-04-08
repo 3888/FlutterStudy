@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import '../../../FlutterLab/API/WeatherRepository.dart';
-import '../services/weather.dart';
+import '../../../FlutterLab/API/weather_repository.dart';
 import 'location_screen.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class LoadingScreen extends StatefulWidget {
+  const LoadingScreen({super.key});
+
   @override
   State<StatefulWidget> createState() {
     return _LoadingScreenState();
@@ -19,7 +20,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   }
 
   void getLocationData() async {
-    var weatherData = await
+    Map<String, dynamic> weatherData = await
         // WeatherModel().getLocationWeather();
         WeatherRepository().fetchCityWeather("Stuttgart");
 

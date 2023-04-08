@@ -9,6 +9,8 @@ import 'package:oktoast/oktoast.dart';
 import '../BitcoinTicker/miui10_anim.dart';
 
 class FlashChat extends StatelessWidget {
+  const FlashChat({super.key});
+
   @override
   Widget build(BuildContext context) {
     Firebase.initializeApp();

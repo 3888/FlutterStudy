@@ -25,9 +25,9 @@ class TodoTasksDatabase {
   }
 
   Future _createDB(Database db, int version) async {
-    final idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
-    final textType = 'TEXT NOT NULL';
-    final boolType = 'BOOLEAN NOT NULL';
+    const idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
+    const textType = 'TEXT NOT NULL';
+    const boolType = 'BOOLEAN NOT NULL';
 
     await db.execute('''
 CREATE TABLE $tableTasks ( 
@@ -64,7 +64,7 @@ CREATE TABLE $tableTasks (
 
   Future<List<Task>> readAllTasks() async {
     final db = await instance.database;
-    final orderBy = '${TaskFields.description} ASC';
+    const orderBy = '${TaskFields.description} ASC';
     final result = await db.query(tableTasks, orderBy: orderBy);
 
     return result.map((json) => Task.fromJson(json)).toList();
