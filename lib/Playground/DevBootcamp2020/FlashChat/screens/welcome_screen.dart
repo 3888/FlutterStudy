@@ -8,6 +8,8 @@ import 'components/ActionButton.dart';
 class WelcomeScreen extends StatefulWidget {
   static const String id = 'welcome_screen';
 
+  const WelcomeScreen({super.key});
+
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
@@ -18,6 +20,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
 
   @override
   void initState() {
+    super.initState();
     controller = AnimationController(
         duration: Duration(seconds: 1), vsync: this, upperBound: 100.0);
 
@@ -41,7 +44,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
               children: <Widget>[
                 Hero(
                   tag: 'logo',
-                  child: Container(
+                  child: SizedBox(
                     child: Image.asset('images/logo.png'),
                     height: 60.0,
                   ),

@@ -1,6 +1,9 @@
 import 'dart:convert';
 
+import 'package:fimber/fimber.dart';
 import 'package:http/http.dart' as http;
+
+var logger = FimberLog("TAG_NETWORK");
 
 class NetworkHelper {
   NetworkHelper(this.url);
@@ -15,7 +18,7 @@ class NetworkHelper {
 
       return jsonDecode(data);
     } else {
-      print(response.statusCode);
+      logger.d(response.statusCode.toString());
     }
   }
 }

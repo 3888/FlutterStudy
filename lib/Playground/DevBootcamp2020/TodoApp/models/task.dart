@@ -1,4 +1,4 @@
-final String tableTasks = 'tasks';
+const String tableTasks = 'tasks';
 
 class TaskFields {
   static final List<String> values = [
@@ -6,9 +6,9 @@ class TaskFields {
     id, isDone, description
   ];
 
-  static final String id = '_id';
-  static final String isDone = 'isImportant';
-  static final String description = 'description';
+  static const String id = '_id';
+  static const String isDone = 'isImportant';
+  static const String description = 'description';
 }
 
 class Task {
@@ -36,7 +36,7 @@ class Task {
   }) =>
       Task(
         id: id ?? this.id,
-        isDone: isImportant ?? this.isDone,
+        isDone: isImportant ?? isDone,
         description: description ?? this.description,
       );
 

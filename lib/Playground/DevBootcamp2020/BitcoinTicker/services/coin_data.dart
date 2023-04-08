@@ -33,32 +33,31 @@ enum Crypto {
 }
 
 enum Currency {
-  AUD("AUD"),
-  BRL("BRL"),
-  CAD("CAD"),
-  CNY("CNY"),
-  EUR("EUR"),
-  GBP("GBP"),
-  HKD("HKD"),
-  IDR("IDR"),
-  ILS("ILS"),
-  INR("INR"),
-  JPY("JPY"),
-  MXN("MXN"),
-  NOK("NOK"),
-  NZD("NZD"),
-  PLN("PLN"),
-  RON("RON"),
-  RUB("RUB"),
-  SEK("SEK"),
-  SGD("SGD"),
-  USD("USD"),
-  ZAR("ZAR");
+  aud("AUD"),
+  brl("BRL"),
+  cad("CAD"),
+  cny("CNY"),
+  eur("EUR"),
+  gbp("GBP"),
+  hkd("HKD"),
+  idr("IDR"),
+  ils("ILS"),
+  inr("INR"),
+  jpy("JPY"),
+  mxn("MXN"),
+  nok("NOK"),
+  nzd("NZD"),
+  pln("PLN"),
+  ron("RON"),
+  rub("RUB"),
+  sek("SEK"),
+  sgd("SGD"),
+  usd("USD"),
+  zar("ZAR");
 
   final String value;
 
   const Currency(this.value);
-
 }
 
 class CoinData {}

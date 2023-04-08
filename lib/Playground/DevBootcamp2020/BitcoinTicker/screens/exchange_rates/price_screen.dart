@@ -58,8 +58,9 @@ class _PriceScreenState extends State<PriceScreen> {
 
   @override
   void initState() {
+    super.initState();
     for (Crypto item in Crypto.values) {
-      getExchangeRate(item, Currency.USD.value);
+      getExchangeRate(item, Currency.usd.value);
     }
   }
 
@@ -95,7 +96,7 @@ class _PriceScreenState extends State<PriceScreen> {
                 canvasColor: Colors.lightBlueAccent,
               ),
               child: DropdownButton<String>(
-                value: Currency.USD.value,
+                value: Currency.usd.value,
                 items: getMenuItems(),
                 onChanged: (value) {
                   if (value != null && value.isNotEmpty) {
