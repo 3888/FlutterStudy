@@ -2,11 +2,11 @@ import 'dart:convert';
 
 import 'package:fimber/fimber.dart';
 import 'package:http_interceptor/http_interceptor.dart';
-import 'package:learn_flutter/Playground/FlutterLab/API/LoggingInterceptor.dart';
+import 'package:learn_flutter/Playground/FlutterLab/API/logging_interceptor.dart';
 import 'package:oktoast/oktoast.dart';
 
-import 'CoinApiInterceptor.dart';
-import 'ExchangerateModel.dart';
+import 'coin_api_interceptor.dart';
+import 'exchangerate_model.dart';
 
 const baseUrl = 'https://rest.coinapi.io';
 
@@ -17,7 +17,7 @@ class CoinApiRepository {
 
   Future<ExchangerateModel> fetchCurrency(
       String basePath, String quotePath) async {
-    var parsedResponse;
+    dynamic parsedResponse;
     try {
       final response = await client
           .get("$baseUrl/v1/exchangerate/$basePath/$quotePath".toUri());

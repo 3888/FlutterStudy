@@ -2,7 +2,7 @@ import 'package:fimber/fimber.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:learn_flutter/Playground/DevBootcamp2020/FlashChat/screens/chat_screen.dart';
-import 'package:learn_flutter/Playground/DevBootcamp2020/FlashChat/screens/components/ActionButton.dart';
+import 'package:learn_flutter/Playground/DevBootcamp2020/FlashChat/screens/components/action_button.dart';
 import 'package:oktoast/oktoast.dart';
 
 import '../flash_chat_constatns.dart';
@@ -75,7 +75,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   setState(() {
                   });
                   try {
-                    final newUser = await _auth.createUserWithEmailAndPassword(
+                    final UserCredential? newUser = await _auth.createUserWithEmailAndPassword(
                         email: email, password: password);
 
                     if (newUser != null) {

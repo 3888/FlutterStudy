@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../utilities/constants.dart';
 
 class CityScreen extends StatefulWidget {
+  const CityScreen({super.key});
+
   @override
   _CityScreenState createState() => _CityScreenState();
 }

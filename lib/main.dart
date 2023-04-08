@@ -1,7 +1,7 @@
 import 'package:fimber/fimber.dart';
 import 'package:flutter/material.dart';
 
-import 'Playground/DevBootcamp2020/TodoApp/TodoApp.dart';
+import 'Playground/DevBootcamp2020/TodoApp/todo_app.dart';
 
 void main() {
   Fimber.plantTree(DebugTree());

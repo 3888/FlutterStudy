@@ -1,7 +1,7 @@
 import 'package:fimber/fimber.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:learn_flutter/Playground/DevBootcamp2020/FlashChat/screens/components/ActionButton.dart';
+import 'package:learn_flutter/Playground/DevBootcamp2020/FlashChat/screens/components/action_button.dart';
 import 'package:oktoast/oktoast.dart';
 
 import '../flash_chat_constatns.dart';
@@ -72,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 color: Colors.lightBlueAccent,
                 onPress: () async {
                   try {
-                    final signIn = await _auth.signInWithEmailAndPassword(
+                    final UserCredential? signIn  = await _auth.signInWithEmailAndPassword(
                         email: "qwerty@qq.qq", password: "qwerty");
 
                     if (signIn != null) {

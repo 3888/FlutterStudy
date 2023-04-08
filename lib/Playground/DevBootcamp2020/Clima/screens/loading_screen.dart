@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../FlutterLab/API/WeatherRepository.dart';
+import '../../../FlutterLab/API/weather_repository.dart';
 import 'location_screen.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -20,7 +20,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   }
 
   void getLocationData() async {
-    var weatherData = await
+    Map<String, dynamic> weatherData = await
         // WeatherModel().getLocationWeather();
         WeatherRepository().fetchCityWeather("Stuttgart");
 
