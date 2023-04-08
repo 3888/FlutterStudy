@@ -15,7 +15,7 @@ class CoinApiRepository {
   InterceptedClient client = InterceptedClient.build(
       interceptors: [CoinApiInterceptor(), LoggingInterceptor()]);
 
-  Future<ExchangerateModel> fetchCurrency(
+  Future<ExchangeRateModel> fetchCurrency(
       String basePath, String quotePath) async {
     dynamic parsedResponse;
     try {
@@ -31,6 +31,6 @@ class CoinApiRepository {
       showToast(e.toString());
     }
 
-    return ExchangerateModel.fromMap(parsedResponse);
+    return ExchangeRateModel.fromMap(parsedResponse);
   }
 }
